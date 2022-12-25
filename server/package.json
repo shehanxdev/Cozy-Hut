@@ -28,5 +28,8 @@
   ],
   "author": "Shehan Chanuka",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "terminal-kit": "^3.0.0"
+  }
 }

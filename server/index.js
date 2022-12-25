@@ -8,12 +8,14 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import terminal_kit from "terminal-kit";
 
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
 const app = express();
+const terminal = terminal_kit.terminal;
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -33,6 +35,20 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-app.listen(8080, () => {
-  console.log(__filename + "\n" + import.meta.url + "\n" + __dirname);
-});
+
+//MONGODB CONFIG
+const PORT = process.env.PORT || 6001;
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    terminal.bold.green("MongoDB is connected\n");
+    app.listen(PORT, () => {
+      terminal.blue.bold(`App is listening at the port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    terminal.bold.red("Did not connect to the database");
+  });

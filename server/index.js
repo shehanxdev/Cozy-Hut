@@ -12,7 +12,7 @@ import terminal_kit from "terminal-kit";
 import { register } from "./controllers/auth.js";
 
 /* CONFIGURATIONS */
-console.log("inside");
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -44,6 +44,7 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName:"Cozy_Hut"
   })
   .then(() => {
     terminal.bold.green("MongoDB is connected\n");

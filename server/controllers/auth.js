@@ -2,6 +2,7 @@ import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "./../models/User.js";
 export const register = async (req, res) => {
+  
   try {
     const {
       firstName,
@@ -23,12 +24,14 @@ export const register = async (req, res) => {
       email,
       password: hashedPassword,
       picturePath,
-      friends,
+      friends, 
       location,
       occupation,
       viewedProfile: 0,
       impressions: 0,
     });
+    
+   
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
   } catch (error) {

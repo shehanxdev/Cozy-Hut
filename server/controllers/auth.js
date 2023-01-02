@@ -1,6 +1,8 @@
 import Jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import User from "./../models/User.js";
+
+//REGISTERING CONTROLLER
 export const register = async (req, res) => {
   
   try {
@@ -38,3 +40,29 @@ export const register = async (req, res) => {
     res.status(500).json({ error: error });
   }
 };
+
+
+//LOGIN IN CONTROLLER
+export const login=async (req,res)=>{
+  try {
+    const {password,email}=req.body;
+  const user=await User.findOne({email:email});
+
+  if(!user){
+    return res.status(400).json({ msg: "User does not exist" });
+  }
+
+  const isMatch=await bcrypt.compare(password,user.password);
+  console.log(isMatch);
+
+  if(!isMatch){
+    return res.status(400).json({ msg: "Invalid credentials" });
+  }
+
+  const token=Jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:'20d'});
+  delete user.password;
+  res.status(200).json({token,user});
+  } catch (error) {
+    res.status(500).json({error:error});
+  }
+}

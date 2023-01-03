@@ -1,25 +1,34 @@
-import User from "../models/User";
+import User from "../models/User.js";
 
-export const getUSer=async(req,res)=>{
-   try {
-    const {userId}=req.params;
-    const user=await User.findById(userId);
-    res.status(500).json({user:user});
+export const getUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    res.status(500).json({ user: user });
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};
 
-   } catch (error) {
-    res.status(404).json({error:error.message});
-   }
+export const getFriends = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
 
-} 
-
-export const getFriends=async(req,res)=>{
-    try {
-        const {userId}=req.params;
-        const user=await User.findById(userId);
-        if(user){
-            
+    if (user) {
+      const friends = await Promise.all(
+        user.friends.map((id) => User.findById(id))
+      );
+      const formattedfriends = friends.map(
+        ({ _id, firstName, lastName, occupation, location, picturePath }) => {
+          _id, firstName, lastName, occupation, location, picturePath;
         }
-    } catch (error) {
-        
+      );
+      res.status(200).json({ friends: formattedfriends });
+    } else {
+      res.status(404).send("User does not exist");
     }
-}
+  } catch (error) {
+    res.status(404).json({ error: error.message });
+  }
+};

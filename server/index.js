@@ -7,13 +7,14 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
-import path from "path"; 
+import path from "path";
 import { fileURLToPath } from "url";
 import terminal_kit from "terminal-kit";
 //CONTORLLERS
 import { register } from "./controllers/auth.js";
 //ROUTER
 import authRoutes from "./routes/auth.js";
+import userroutes from "./routes/user.js";
 
 /* CONFIGURATIONS */
 
@@ -41,18 +42,19 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-//ROUTES WITH FILES 
+//ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
 
-//ROUTES 
-app.use("/auth",authRoutes);
+//ROUTES
+app.use("/auth", authRoutes);
+app.use("/user/", userroutes);
 //MONGODB CONFIG
 const PORT = process.env.PORT || 6001;
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    dbName:"Cozy_Hut"
+    dbName: "Cozy_Hut",
   })
   .then(() => {
     terminal.bold.green("MongoDB is connected\n");

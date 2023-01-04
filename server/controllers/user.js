@@ -2,6 +2,7 @@ import User from "../models/User.js";
 
 //FETCH USER
 export const getUser = async (req, res) => {
+  
   try {
     const { userId } = req.params;
     const user = await User.findById(userId);
@@ -44,7 +45,8 @@ export const getFriends = async (req, res) => {
 };
 
 //FRIEND OR UNFRIEND FRIENDS
-export const addRemoveFriends = async (req, res, next) => {
+export const addRemoveFriends = async (req, res) => {
+ 
   try {
     const { id } = req.params;
     const { friendsID } = req.params;

@@ -47,7 +47,7 @@ app.post("/auth/register", upload.single("picture"), register);
 
 //ROUTES
 app.use("/auth", authRoutes);
-app.use("/user/", userroutes);
+app.use("/user", userroutes);
 //MONGODB CONFIG
 const PORT = process.env.PORT || 6001;
 mongoose

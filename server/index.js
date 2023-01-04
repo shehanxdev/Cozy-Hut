@@ -12,9 +12,12 @@ import { fileURLToPath } from "url";
 import terminal_kit from "terminal-kit";
 //CONTORLLERS
 import { register } from "./controllers/auth.js";
+import { createPost } from "./controllers/post.js";
 //ROUTER
 import authRoutes from "./routes/auth.js";
 import userroutes from "./routes/user.js";
+//MIDDLEWARE
+import { verify } from "./middleware/auth.js";
 
 /* CONFIGURATIONS */
 
@@ -44,6 +47,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 //ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
+app.post("/post/create", upload.single("picture"), verify, createPost);
 
 //ROUTES
 app.use("/auth", authRoutes);

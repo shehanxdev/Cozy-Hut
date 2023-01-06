@@ -15,7 +15,8 @@ import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/post.js";
 //ROUTER
 import authRoutes from "./routes/auth.js";
-import userroutes from "./routes/user.js";
+import userRoutes from "./routes/user.js";
+import postRoutes from "./routes/post.js";
 //MIDDLEWARE
 import { verify } from "./middleware/auth.js";
 
@@ -51,7 +52,8 @@ app.post("/post/create", upload.single("picture"), verify, createPost);
 
 //ROUTES
 app.use("/auth", authRoutes);
-app.use("/user", userroutes);
+app.use("/user", userRoutes);
+
 //MONGODB CONFIG
 const PORT = process.env.PORT || 6001;
 mongoose

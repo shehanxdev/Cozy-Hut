@@ -48,11 +48,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 //ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
-app.post("/post/create", upload.single("picture"), verify, createPost);
+app.post("/post/create", verify, upload.single("picture"), createPost);
 
 //ROUTES
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/post", verify, postRoutes);
 
 //MONGODB CONFIG
 const PORT = process.env.PORT || 6001;

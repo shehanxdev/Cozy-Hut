@@ -19,7 +19,7 @@ export const register = async (req, res) => {
 
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
-
+    console.log(hashedPassword);
     const newUser = new User({
       firstName,
       lastName,

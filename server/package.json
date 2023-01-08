@@ -30,6 +30,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "terminal-kit": "^3.0.0"
   }
 }

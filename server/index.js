@@ -21,6 +21,7 @@ import postRoutes from "./routes/post.js";
 import { verify } from "./middleware/auth.js";
 //MODELS
 import User from "./models/User.js";
+import Post from "./models/Post.js";
 //DATA
 import { generateUsers, generatePosts } from "./data/fakeDataGenerator.js";
 
@@ -72,16 +73,14 @@ mongoose
     app.listen(PORT, () => {
       terminal.blue.bold(`App is listening at the port ${PORT}`);
       //const users=generateUsers(20);
-      generatePosts(20).then((result) => {
-        console.log(result);
-      });
-
-      // User.insertMany(users)
-      // .then((result)=>{
-      //   console.log(result);
-      // })
-      // .catch((err)=>{
-      //   console.log(err);
+      // generatePosts(20).then((result) => {
+      //   Post.insertMany(result)
+      //     .then((result) => {
+      //       console.log(result);
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
       // });
     });
   })

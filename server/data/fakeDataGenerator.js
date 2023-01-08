@@ -28,9 +28,9 @@ export const generateUsers = (number) => {
 };
 
 export const generatePosts = async (number) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      let posts = [];
+      var posts = [];
       for (let i = 0; i < number; ++i) {
         const userId = faker.helpers.arrayElement([
           "63ba7049f14355636a5ff15a",
@@ -40,23 +40,22 @@ export const generatePosts = async (number) => {
           "63ba6fee1364a887bf74dbf8",
           "63ba6fee1364a887bf74dbf9",
         ]);
-        User.findById(userId).then((user) => {
-          const post = new Post({
-            userId,
-            firstName: user.firstName,
-            firstName: user.lastName,
-            location: user.location,
-            description: faker.lorem.paragraph(1),
-            picturepath: "null",
-            userPicturePath: "null",
-            likes: {},
-            comments: [],
-          });
-          //console.log(post);
-          posts.push(post);
+        const user = await User.findById(userId);
+        const post = new Post({
+          userId,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          location: user.location,
+          description: faker.lorem.paragraph(1),
+          picturepath: "null",
+          userPicturePath: "null",
+          likes: {},
+          comments: [],
         });
+
+        posts.push(post);
       }
-      console.log(posts);
+
       resolve(posts);
     } catch (error) {
       reject(error);

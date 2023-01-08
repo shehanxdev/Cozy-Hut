@@ -46,3 +46,18 @@ export const getFeedPosts=async(req,res)=>{
     res.status(404).json({ message: err.message });
   }
 }
+
+export const getUserPosts=async(req,res)=>{
+  try {
+    const {userId}=req.params;
+    const posts=await Post.fint({userId});
+    if(posts){
+      res.status(200).json(posts);
+    }
+    else{
+      res.status(404).send("User has not posted anything");
+    }
+  } catch (error) {
+    res.status(404).json({ message: err.message });
+  }
+}

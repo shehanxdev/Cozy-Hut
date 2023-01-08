@@ -8,4 +8,29 @@
 ## Project status
 <p style="color:red">This project is currently in development</p>
 
+## Technologies
+### Languages
+<ul>
+  <li>Javascript</li>
+  <li>JSON</li>
+  <li>CSS</li>
+</ul>
 
+### Tools
+<ul>
+  <li>Git & GitHub </li>
+  <li>VSCode</li>
+</ul>
+
+### Frameworks, Runtimes & libraries 
+<ul>
+  <li>Node.js</li>
+  <li>React</li>
+  <li>Express</li>
+  <li>Mongoose</li>
+</ul>
+
+### DBMS
+<ul>
+  <li>MongoDB</li>
+</ul>

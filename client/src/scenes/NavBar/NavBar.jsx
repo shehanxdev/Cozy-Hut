@@ -1,7 +1,8 @@
+import FlexBetween from "componenets/FlexBetween";
 import React from "react";
 
 function NavBar() {
-  return <div>NavBar</div>;
+  return <FlexBetween></FlexBetween>;
 }
 
 export default NavBar;

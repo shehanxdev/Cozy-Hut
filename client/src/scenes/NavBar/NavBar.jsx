@@ -7,7 +7,9 @@ function NavBar() {
   const alt = theme.palette.background.alt;
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
-      <FlexBetween gap="1.75rem"></FlexBetween>
+      <FlexBetween gap="1.75rem">
+        <Typography>CozyHut</Typography>
+      </FlexBetween>
     </FlexBetween>
   );
 }

@@ -1,7 +1,8 @@
 import React from "react";
+import NavBar from "scenes/NavBar/NavBar";
 
 function LoginPage() {
-  return <div>LoginPage</div>;
+  return <NavBar />;
 }
 
 export default LoginPage;

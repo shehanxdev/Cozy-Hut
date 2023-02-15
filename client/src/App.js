@@ -11,6 +11,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
   const mode = useSelector((state) => state.mode);
+
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
   return (
@@ -19,7 +20,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/" element={<LoginPage />} />
             <Route path="/home" component={HomePage} />
             <Route path="/profile/:userId" component={ProfilePage} />
           </Routes>

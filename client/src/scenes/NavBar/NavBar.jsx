@@ -32,7 +32,8 @@ function NavBar() {
               cursor: "pointer",
             },
           }}
-        >{//ssss}
+        >
+          {}
           CozyHut
         </Typography>
         {isNonMobileScreens && (

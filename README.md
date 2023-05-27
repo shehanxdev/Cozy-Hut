@@ -1,4 +1,4 @@
-# This project is on hold  
+
 # Cozy-Hut Readme
 
 ## Project name and pitch

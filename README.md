@@ -1,5 +1,5 @@
 
-# Cozy-Hut Readme
+# Cozy-Hut Readme 
 
 ## Project name and pitch
 **Project Name**: Cozy Hut

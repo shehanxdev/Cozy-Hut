@@ -6,7 +6,7 @@
 </br>
 **Pitch**: Coxy Hut is a social media application build with MERN stack. The primary focus is to get familiar with the MERN stack and surrounding technologies like redux etc.
 
-## Project status
+## Project status 
 
 ## Technologies
 ### Languages

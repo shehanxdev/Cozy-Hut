@@ -1,4 +1,4 @@
-
+ 
 # Cozy-Hut Readme 
 
 ## Project name and pitch
